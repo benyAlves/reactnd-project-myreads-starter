@@ -34,12 +34,12 @@ class SearchBook extends Component{
 
             {
             
-            this.props.seachedBooks.map(book => {
-                          if(book.shelf === this.props.shelf){
-                            return (<Book onMoveBook={this.props.onMoveBook} key={book.id} book={book}/>)
-                          }
-                      })
-                      }
+                this.props.seachedBooks.map(book => {
+                            if(book.shelf === this.props.shelf){
+                                return (<Book onMoveBook={this.props.onMoveBook} key={book.id} book={book}/>)
+                            }
+                        })
+            }
             </ol>
           </div>
         </div>
