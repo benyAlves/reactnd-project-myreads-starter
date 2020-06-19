@@ -7,6 +7,9 @@ class SearchBook extends Component{
 
 
     render(){
+
+        const { seachedBooks, query, searchBooks, onClearSearch } = this.props;
+
         return (
             <div className="search-books">
           <div className="search-books-bar">
@@ -14,7 +17,7 @@ class SearchBook extends Component{
                  to='/'>
                      <button
                     className='close-search'
-                    onClick={this.props.onClearSearch}>
+                    onClick={onClearSearch}>
                         Close
                         </button>
                         </Link>
@@ -23,8 +26,8 @@ class SearchBook extends Component{
               <input 
                 type="text" 
                 placeholder="Search by title or author"
-                value={this.props.query}
-                onChange={(event) => this.props.searchBooks(event.target.value)}
+                value={query}
+                onChange={(event) => searchBooks(event.target.value)}
               />
 
             </div>
@@ -33,12 +36,11 @@ class SearchBook extends Component{
             <ol className="books-grid">
 
             {
-            
-                this.props.seachedBooks.map(book => {
-                            if(book.shelf === this.props.shelf){
-                                return (<Book onMoveBook={this.props.onMoveBook} key={book.id} book={book}/>)
-                            }
-                        })
+                seachedBooks && seachedBooks.length > 0 && this.props.seachedBooks.map(book => {
+                    if(book.shelf === this.props.shelf){
+                        return (<Book onMoveBook={this.props.onMoveBook} key={book.id} book={book}/>)
+                    }
+                })
             }
             </ol>
           </div>
